@@ -43,3 +43,72 @@ tasks.named('test') {
     useJUnitPlatform()
     test.finalizedBy jacocoTestReport
 }
+
+
+task helloWorld {
+    doLast {
+        println 'Hello, World'
+    }
+}
+
+task eat(dependsOn: helloWorld) {
+    doLast {
+        println 'eat'
+    }
+}
+
+task initialiseDatabase
+initialiseDatabase { println 'Connect to database' }
+
+initialiseDatabase {
+    doLast {
+        println 'second command'
+    }
+}
+
+initialiseDatabase {
+    doLast {
+        println 'third command'
+    }
+}
+
+initialiseDatabase.doFirst({ println 'do this first' })
+
+
+initialiseDatabase.doLast({ println 'do this to wrap everything up' })
+
+initialiseDatabase.doFirst {
+    println 'another way of doing first'
+}
+
+initialiseDatabase.onlyIf {
+    1 == 2
+}
+
+/*
+this somehow doesn't work
+task copyFiles {
+    fileManifest = ['data.csv', 'config.json']
+}
+
+task createArtifact(dependsOn: copyFiles) {
+    doLast {
+        println 'FILE IN MANIFEST: ${copyFiles.fileManifest}'
+    }
+}
+*/
+
+task copyFile(type: Copy) {
+    from 'src/main/java/jenadle'
+    into 'src/main/resources'
+    include '*.java'
+}
+
+
+
+task customJar(type: Jar) {
+    archiveName = 'custom.jar'
+    destinationDir = file('src/main/resources')
+    from sourceSets.main.java
+}
+
