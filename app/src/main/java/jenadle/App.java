@@ -12,9 +12,11 @@ public class App {
         System.out.println(new App().getGreeting());
         System.out.println("Hello Jenkins!");
         System.out.println("Hello again!!");
+        //this is another comment
         // a comment
     }
     public String x() {
+        System.out.println("we will see");
         return "X";
     }
 }
