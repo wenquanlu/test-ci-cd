@@ -14,7 +14,4 @@ public class App {
         System.out.println("Hello again!!");
         
     }
-    public String x() {
-        return "X";
-    }
 }
