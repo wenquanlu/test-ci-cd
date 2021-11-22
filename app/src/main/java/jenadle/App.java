@@ -17,5 +17,6 @@ public class App {
     }
     public String x() {
         System.out.println("we will see, how are you going?");
+        return "X";
     }
 }
