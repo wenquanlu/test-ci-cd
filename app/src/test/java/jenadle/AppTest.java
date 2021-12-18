@@ -5,10 +5,47 @@ package jenadle;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
 
-class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    }
+class CalculatorTest {
+private static Calculator calcObj;
+@Test
+void testAdd() {
+    assertEquals(3, calcObj.add(1, 2));
+}
+
+@BeforeAll
+public static void calcCreation(){
+    calcObj = new
+    Calculator();
+}
+@Test
+void testSmallPositive() {
+    assertEquals(1, calcObj.isPositiveNumber(2));
+}
+
+@Test
+void testSmallNegative() {
+    assertEquals(-1, calcObj.isPositiveNumber(-3));
+}
+
+@Test
+void testZero() {
+    assertEquals(0, calcObj.isPositiveNumber(0));
+}
+
+@Test
+void testMinusZero() {
+    assertEquals(0, calcObj.isPositiveNumber(-0));
+}
+
+@Test
+void testLargePositive() {
+    assertEquals(1, calcObj.isPositiveNumber(13453));
+}
+
+@Test
+void testLargeNegative() {
+    assertEquals(-1, calcObj.isPositiveNumber(-99353));
+}
 }

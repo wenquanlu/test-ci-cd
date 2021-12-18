@@ -7,6 +7,59 @@
  */
 
 plugins {
+    id 'java'
+    id 'application'
+}
+repositories {
+    jcenter()
+}
+dependencies {
+    implementation 'com.google.guava:guava:29.0-jre'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+}
+test {
+    useJUnitPlatform()
+}
+application {
+    mainClass = 'jenadle.Calculator'
+}
+/*
+
+build {
+    dependsOn 'clean'
+}*/
+
+build {
+dependsOn 'clean'
+}
+
+task task1 {
+    println '111'
+}
+
+task task2 {
+    println '222'
+}
+task bune
+bune {
+    dependsOn task1
+}
+
+bune {
+    dependsOn task2
+}
+
+task brun
+brun {
+dependsOn 'build'
+}
+brun {
+dependsOn 'run'
+}
+
+/*
+plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id 'jacoco'
@@ -27,7 +80,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'jenadle.App'
+    mainClass = 'jenadle.Calculator'
 }
 
 jacocoTestReport {
@@ -43,6 +96,8 @@ tasks.named('test') {
     useJUnitPlatform()
     test.finalizedBy jacocoTestReport
 }
+
+test.dependsOn(run)
 
 
 task helloWorld {
