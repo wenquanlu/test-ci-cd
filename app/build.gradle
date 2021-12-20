@@ -29,11 +29,11 @@ application {
 build {
     dependsOn 'clean'
 }*/
-
+/*
 build {
 dependsOn 'clean'
 }
-
+*/
 task task1 {
     println '111'
 }
